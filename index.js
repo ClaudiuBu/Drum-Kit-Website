@@ -10,6 +10,7 @@ for(var i =0;i<btn.length;i++){
     btn[i].addEventListener("click", function(){
           var buttonInnerHTML = this.innerHTML;
           makeSound(buttonInnerHTML);
+          makeAnimation(buttonInnerHTML);
 
     }
 
@@ -19,6 +20,7 @@ for(var i =0;i<btn.length;i++){
 
     document.addEventListener("keydown", function(){
       makeSound(event.key);
+      makeAnimation(event.key);
     });
 
   //Logica
@@ -60,4 +62,13 @@ function makeSound(arg1){
             sound.play();
 
     }
+}
+function makeAnimation(arg1){
+  var activeButton =  document.querySelector("."+arg1);
+  activeButton.classList.add("pressed");
+  setTimeout(stopAnimation, 250);
+
+  function stopAnimation(){
+    activeButton.classList.remove("pressed");
+  }
 }
